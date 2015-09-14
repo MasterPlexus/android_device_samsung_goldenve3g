@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <project path="device/samsung/goldenve3g" name="MasterPlexus/android_device_samsung_goldenve3g" remote="github" revision="jb4.2" />
+</manifest>
