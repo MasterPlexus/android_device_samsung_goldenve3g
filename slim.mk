@@ -4,11 +4,11 @@ $(call inherit-product, vendor/slim/config/gsm.mk)
 # Release name
 PRODUCT_RELEASE_NAME := goldenve3g
 
-# Boot animation
+# Boot animation todo!
 TARGET_SCREEN_HEIGHT := 1024
 TARGET_SCREEN_WIDTH := 600
 
-# Inherit some common CM stuff.
+# Inherit some common CM stuff. Todo!
 $(call inherit-product, vendor/slim/config/common_full_tablet_wifionly.mk)
 
 # Inherit device configuration
