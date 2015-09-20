@@ -12,7 +12,7 @@ TARGET_SCREEN_WIDTH := 600
 $(call inherit-product, vendor/slim/config/common_full_tablet_wifionly.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/goldenve3g/device_golden3g.mk)
+$(call inherit-product, device/samsung/goldenve3g/device_goldenve3g.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := goldenve3g
