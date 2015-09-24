@@ -363,5 +363,6 @@
 
 <!-- Custom for I8200 -->
 <project path="device/samsung/goldenve3g" name="MasterPlexus/android_device_samsung_goldenve3g" remote="github" revision="jb4.2" />
+<project path="vendor/samsung" name="MasterPlexus/vendor_goldenve" remote="github" />
 
 </manifest>
