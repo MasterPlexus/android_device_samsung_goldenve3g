@@ -25,10 +25,10 @@
 # Target info
 USE_CAMERA_STUB := true
 
-
+TARGET_NO_RECOVERY := false
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_NO_KERNEL := true
+TARGET_NO_KERNEL := false
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_BOARD_PLATFORM := mrvl
@@ -37,27 +37,34 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 
-TARGET_BOOTLOADER_BOARD_NAME := PXA986
+TARGET_BOOTLOADER_BOARD_NAME := PXA988
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 HAVE_HTC_AUDIO_DRIVER := true
 BOARD_USES_GENERIC_AUDIO := true
 
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CFLAGS += -mcpu=cortex-a9 -mtune=cortex-a9 -marm -march=armv7-a
+#-mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mcpu=cortex-a9 -mtune=cortex-a9 -marm -march=armv7-a
+#-mfpu=neon -mfloat-abi=softfp
 
 # Not Yet
 #TARGET_BOARD_INFO_FILE := device/samsung/lt023g/board-info.txt
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/samsung/goldenve3g/kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/lt02
-#TARGET_KERNEL_CONFIG := blackhawk_lt02_defconfig
+#TARGET_KERNEL_SOURCE := kernel/i8200
+#TARGET_KERNEL_CONFIG := pxa986_golden_rev02_defconfig
 BOARD_KERNEL_CMDLINE := 
-BOARD_KERNEL_BASE := 0x10000000
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x11000000
-BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_BASE := 268435456 
 
+#BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 285212672
+#die anderen parameter sind wohl unnötig?
+#BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 
+#unnown paraeter mayb a deviceree? --dt device/samsung/goyave/dt.img 
+#0x11000000
+BOARD_KERNEL_PAGESIZE := 2048
+#BOARD_CUSTOM_BOOTIMG_MK := true #here must the custommake stated...
 
 # Kernel Modules
 # SAMSUNG_MODULES:
@@ -73,20 +80,25 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 #BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun0/file"
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_RECOVERY_SWIPE := true                                                                                                          
-RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := device/samsung/goldenve3g/rootdir/fstab.pxa988
+BOARD_HAS_NO_SELECT_BUTTON := false
+BOARD_RECOVERY_SWIPE := true 
+#RECOVERY_FSTAB_VERSION := 2
+TARGET_RECOVERY_FSTAB := device/samsung/goldenve3g/rootdir/recovery.fstab
 
 #TARGET_RECOVERY_INITRC := device/samsung/lt023g/recovery/root/init.recovery.rc
+
 
     
 # Partitions
 TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01000000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x5F100000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0148600000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216 
+#0x01000000
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216 
+#0x01000000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1594884096 
+#0x5F100000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5509218304 
+#0x0148600000
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 
